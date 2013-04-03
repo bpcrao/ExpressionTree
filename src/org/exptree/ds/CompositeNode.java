@@ -3,20 +3,42 @@
  */
 package org.exptree.ds;
 
-import java.util.List;
+import org.exptree.visitor.ETVisitor;
 
 /**
  * @author Purna
- *
+ * 
  */
-public class CompositeNode extends INode{
+public class CompositeNode extends INode {
 
-	List<INode> children;
+	public INode left;
+	public INode right;
+	public ETVisitor visitor;
+
 	/**
 	 * 
 	 */
 	public CompositeNode() {
+
+	}
+
+	/**
+	 * @param left
+	 * @param right
+	 */
+	public CompositeNode(INode left, INode right) {
 		// TODO Auto-generated constructor stub
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.exptree.ds.INode#accept(org.exptree.visitor.ETVisitor)
+	 */
+	@Override
+	public void accept(ETVisitor visitor) {
+		this.visitor=visitor;
+		visitor.visit(this);
 	}
 
 }
